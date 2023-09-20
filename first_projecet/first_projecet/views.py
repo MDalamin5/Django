@@ -8,3 +8,9 @@ def about(request):
 
 def alamin(request):
     return HttpResponse ("Its My Portfollio")
+
+def hello(request):
+    return HttpResponse("HEllo sir !!!")
+
+def today_code(request):
+    return HttpResponse("Today Code")
