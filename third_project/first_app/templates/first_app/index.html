@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>we are inside in app</h1>
+    <h1>Author name: {{author}} </h1>
+    <h2>Age: {{age}} </h2>
+    
+    {% if age >= 18 %}
+    <p>You are aplicable to get the Licence</p>
+    {%else%}
+    <p>You are Not Elagebable to get the licence</p>
+    {% endif %}
+
+    <h1>Your current Mark: {{mark}} </h1>
+
+    
+    {% if mark > 80 %}
+    <p>You go A+</p>
+    {% elif mark > 70 %}
+    <p>You got A</p>
+    {% else %}
+    <p>You are Fail in Exam</p>
+    {% endif %}
+    
+</body>
+</html>
