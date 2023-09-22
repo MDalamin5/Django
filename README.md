@@ -44,9 +44,6 @@ My learning journey is organized into several phases, each building on the knowl
 
 If you're interested in following along with my learning journey or contributing to this project, you can get started by cloning this repository:
 
-```bash
-git clone https://github.com/MDalamin5/Django.git
-```
 
 Please refer to the specific phase or topic folders for detailed READMEs and code samples related to each learning stage.
 
