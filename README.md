@@ -11,7 +11,6 @@ Welcome to my Django Learning Journey and Project Repository! This repository se
 - [Getting Started](#getting-started)
 - [Project Overview](#project-overview)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -61,6 +60,3 @@ This phase is where I'll put everything I've learned into practice by creating a
 
 If you'd like to contribute to my learning journey or collaborate on the professional project, feel free to submit issues, pull requests, or contact me through the GitHub repository.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE), which means you are free to use and modify the code as long as you provide proper attribution.
