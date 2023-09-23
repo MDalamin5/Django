@@ -1,14 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>First App</title>
+    <link rel="stylesheet" href= "{% static 'css/first2.css'%}"/>
+    
     
 </head>
 <body>
     <h1>we are inside in app</h1>
     <h1>Author name: {{name}} </h1>
+    <img src="{% static "image/sunTree.jpeg" %} " alt="sunTree">
     {% comment %} 
     <h2>Age: {{age}} </h2>
     
