@@ -1,0 +1,11 @@
+body{
+    background-color: lightblue;
+}
+h1{
+    color: rgb(5, 53, 53);
+}
+img{
+    display: flex;
+    width: 90%;
+    padding: 10px;
+}

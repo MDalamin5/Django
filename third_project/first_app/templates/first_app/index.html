@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
     <h1>we are inside in app</h1>
-    <h1>Author name: {{author}} </h1>
+    <h1>Author name: {{name}} </h1>
+    {% comment %} 
     <h2>Age: {{age}} </h2>
     
     {% if age >= 18 %}
@@ -25,7 +27,35 @@
     <p>You got A</p>
     {% else %}
     <p>You are Fail in Exam</p>
-    {% endif %}
+    {% endif %} {% endcomment %}
+
+    <table border="1", width = 300  >
+        <tr>
+            <th>ID</th>
+            <th>Course</th>
+            <th>Instructor</th>
+        </tr>
+
+        {% for i  in courses  %}
+        <tr>
+            <td> {{i.id}} </td>
+            <td> {{i.course}} </td>
+            <td> {{i.teacher}} </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <h1> Mark: {{marks|add:"2" }} </h1>
+    <h2>Mark is Divisible: {{marks | divisibleby:"2"}} </h2>
+    <h2>length of Name: {{name | length}} </h2>
+    <h2>Number of Word in Blog: {{blog|wordcount}} </h2>
+    <h3> {{blog|truncatewords:10}} </h3>
+    <h2> {{blog|truncatechars:40}} </h2>
+    <h3> {{name | make_list}} </h3>
+    <h3> {{name | upper}} </h3>
+    <h3> {{name | lower}} </h3>
+    <h2> {{lst | join:", "}} </h2>
     
 </body>
 </html>
