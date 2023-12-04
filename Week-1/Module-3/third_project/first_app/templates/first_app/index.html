@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html In Apps</title>
+    <link rel="stylesheet" href="{% static "./css/first.css" %}">
+</head>
+<body>
+    <h2>Riht now in apps home</h2>
+    <h3>This page author name: {{name}} And age : {{age}} </h3>
+
+    <img src="{% static "gmage/I.jpeg" %} " alt="hiii">
+    <img src="{% static "./gmage/E.jpeg" %} " alt="underwater">
+
+     {% comment %} {% if age < 18 %}
+    <p>You are not eligable for vote</p>
+    {% else %}
+    <p>You can give vote to ...</p>
+    {% endif %}
+
+    {% if marks >= 90 %}
+    <p>You got A</p>
+    {% elif marks >= 80 %}
+    <p>You got A-</p>
+
+    {% elif marks >= 60 %}
+    <p>You are pass....</p>
+
+    {% else %}
+    <p>You are fail fail</p>
+
+    
+    {% endif %} 
+
+     <table border="1" width = 500>
+        <tr>
+            <th>ID</th>
+            <th>Course</th>
+            <th>Teacher</th>
+        </tr>
+        
+            {% for i in courses %}
+            <tr>
+                <td> {{i.id}} </td> 
+                <td> {{i.course}} </td> 
+                <td> {{i.teacher}} </td>
+            </tr>
+            {% endfor %}
+            
+        
+
+    </table> {% endcomment %}
+
+   
+    
+    {% comment %} <h1> {{marks | add:'2'}} </h1>
+
+    <h1> {{ marks | divisibleby:'3' }} </h1>
+    <!--length count-->
+    <h1>{{ name | length }}</h1>
+
+    <!--wordcount-->
+    <h1>{{ blog | wordcount }}</h1>
+
+    <!--truncatewords-->
+    <h3>{{ blog | truncatewords:10 }}</h3>
+    <h4>{{ blog | truncatechars:15 }}</h4>
+
+    <!--make_list-->
+    <h1>{{ name | make_list }}</h1>
+
+    <!--join-->
+    <h1>{{ list | join:"**" }}</h1> {% endcomment %}
+
+    <script src="{% static "./js/hello.js" %} "></script>
+
+</body>
+</html>

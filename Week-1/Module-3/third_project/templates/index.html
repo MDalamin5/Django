@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Static file</title>
+    <link rel="stylesheet" href="{% static "./css/style.css" %} ">
+</head>
+<body>
+    <header>
+        <h1>Add new Static file</h1>
+        <hr>
+    </header>
+    <main>
+        <img src="{% static "./images/B.jpeg" %}" alt="hello sir">
+        <img src="{% static "./images/C.jpeg" %} " alt="">
+    </main>
+
+    <script src="{% static "./js/main.js" %} "></script>
+
+</body>
+</html>

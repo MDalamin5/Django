@@ -1,0 +1,1 @@
+console.log('This is an intor of js in DJanjo')
