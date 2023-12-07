@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 def contact(request):
-    return render(request, 'f_app/index.html', {'name' : 'I am Rahim', 'marks' : 86,
+    return render(request, 'f_app/home.html', {'name' : 'I am Rahim', 'marks' : 86,
                                                 'courses' : [
         {
             'id' : 1,
