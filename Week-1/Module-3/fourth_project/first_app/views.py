@@ -23,4 +23,4 @@ def contact(request):
     ]})
 
 def about(request):
-    return render(request, 'f_app/about.html')
+    return render(request, 'f_app/about.html', {'author' : 'md al amin'})

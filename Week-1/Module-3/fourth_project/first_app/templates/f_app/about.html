@@ -1,8 +1,14 @@
 {% extends "base.html" %}
-
+{% load first_tags %}
+{% load first_tags %}
 {% block title %}About Page{% endblock %}
 
 
-{% block content %}This is a About page
-{{ block.super }}
+{% block content %}This is a About page and Author: 
+{{author}}
+
+<h1>{{author|change_name:'change'}}</h1>
+<h1> {{author|change_name:'title'}} </h1>
+
+{% show_courses %}
 {% endblock content %}
