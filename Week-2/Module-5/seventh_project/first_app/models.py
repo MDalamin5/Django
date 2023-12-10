@@ -7,3 +7,6 @@ class StudentModel(models.Model):
     name = models.CharField(max_length=30)
     father_name = models.CharField(max_length=30)
     address = models.TextField()
+
+    def __str__(self) -> str:
+        return f"Roll: {self.roll}  Name: {self.name}"
