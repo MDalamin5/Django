@@ -85,7 +85,7 @@ class Passport(models.Model):
 
 # One to many Relationship  1----->m : Person-------Post
 class Post(models.Model):
-    user = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True, related_name='posts')
     post_cap = models.CharField(max_length=100)
     post_details = models.CharField(max_length=500)
 
@@ -104,7 +104,7 @@ class Student(models.Model):
         return self.name
 
 class Teacher(models.Model):
-    student = models.ManyToManyField(Student)
+    student = models.ManyToManyField(Student, related_name='teachers')
     name = models.CharField(max_length=100)
     subject = models.CharField(max_length=30)
     mobile = models.CharField(max_length=11)
