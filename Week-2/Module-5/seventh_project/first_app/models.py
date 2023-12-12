@@ -61,5 +61,24 @@ class FriendModel(models.Model):
 class MeModel(FriendModel):
     class Meta:
         proxy = True
+        ordering = ['id']
 
-        
+
+# One to One Relationship BuildUp
+class Person(models.Model):
+    name = models.CharField(max_length=30)
+    city = models.CharField(max_length=20)
+    email = models.EmailField(max_length=50)
+
+    def __str__(self) -> str:
+        return f"{self.name}"
+
+
+class Passport(models.Model):
+    user = models.OneToOneField(to=Person, on_delete= models.CASCADE)
+    pass_number = models.IntegerField()
+    page = models.IntegerField()
+    validity = models.IntegerField()
+    class Meta:
+        ordering = ['id']
+
