@@ -11,3 +11,7 @@ def home(request):
     else:
         form = StudentForm()
     return render(request, 'index.html', {'form' : form})
+
+
+def show_data(request):
+    return render(request, 'show_data.html')
