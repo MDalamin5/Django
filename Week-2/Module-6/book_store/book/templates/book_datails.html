@@ -5,37 +5,33 @@
 <h1 style="margin-bottom: 50px; ">List Of The Books</h1>
 
 <div>
-    {% if booklist %}
     <table style="width: 90%; margin: auto;" class="table table-bordered border-primary table-hover">
     <thead>
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Book Name</th>
-        {% comment %} <th scope="col">Author</th>
+        <th scope="col">Author</th>
         <th scope="col">Category</th>
         <th scope="col">First Publish</th>
         <th scope="col">Last Publish</th>
-        <th scope="col">Action</th> {% endcomment %}
+        <th scope="col">Action</th>
         
         
       </tr>
     </thead>
     <tbody>
-        {% for item in booklist %}
+        
         <tr>
         <th scope="row"> {{item.id}} </th>
-            <td> <a href=" {% url "book_datails" item.id %} ">{{item.book_name}}</a></td>
-            {% comment %} <td> {{item.author}}</td>
+            <td> {{item.book_name}}</td>
+            <td> {{item.author}}</td>
             <td> {{item.category}}</td>
             <td> {{item.first_pub}}</td>
             <td> {{item.last_pub}}</td>
-            <td> <a href=" {% url "edit_book" id=item.id %} " class="btn btn-warning btn-sm">Edit</a> <a href=" {% url "delete_book" item.id %} " class="btn btn-danger btn-sm">Delete</a> </td> {% endcomment %}
+            <td> <a href=" {% url "edit_book" id=item.id %} " class="btn btn-warning btn-sm">Edit</a> <a href=" {% url "delete_book" item.id %} " class="btn btn-danger btn-sm">Delete</a> </td>
         </tr>
-        {% endfor %}
+        
     </tbody>
   </table>
-  {% else %}
-  <h2>No Data Abilable</h2>
-</div>
-{% endif %}
+  
 {% endblock content %}

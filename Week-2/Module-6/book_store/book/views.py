@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from book.forms import BookStoreForm
 from book.models import BookStoreModel
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 # function Base view
@@ -30,27 +32,81 @@ class MyTemplateHomeView(TemplateView):
 
 
 
-def store_book(request):
-    if request.method == "POST":
-        book = BookStoreForm(request.POST)
-        if book.is_valid():
-            book.save()
-            print(book.cleaned_data)
-            return redirect('show_books')
-    else:
-        book = BookStoreForm()
-    return render(request, 'store_book.html', {'form' : book})
+# def store_book(request):
+#     if request.method == "POST":
+#         book = BookStoreForm(request.POST)
+#         if book.is_valid():
+#             book.save()
+#             print(book.cleaned_data)
+#             return redirect('show_books')
+#     else:
+#         book = BookStoreForm()
+#     return render(request, 'store_book.html', {'form' : book})
+    
+# class BookFormView(FormView):
+#     template_name = 'store_book.html'
+#     form_class = BookStoreForm
+#     success_url = reverse_lazy('show_books')
+
+#     def form_valid(self, form):
+#         print(form.cleaned_data)
+#         form.save()
+#         return redirect('show_books')
+    
+class BookFormView(CreateView):
+    model = BookStoreModel
+    template_name = 'store_book.html'
+    form_class = BookStoreForm
+    success_url = reverse_lazy('show_books')
+    
 
 
 
 
+# function base view
+# def show_books(request):
+#     book = BookStoreModel.objects.all()
+#     return render(request, 'show_book.html', {'data' : book})
 
-def show_books(request):
-    book = BookStoreModel.objects.all()
-    # print(book)
-    # for item in book:
-    #     print(item.first_pub)
-    return render(request, 'show_book.html', {'data' : book})
+
+# Class Base views
+
+class BookListViwe(ListView):
+    model = BookStoreModel
+    template_name = 'show_book.html'
+    context_object_name = 'booklist'
+
+    # def get_queryset(self):
+    #     return BookStoreModel.objects.filter(author='Python')
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context = {'booklist' : BookStoreModel.objects.order_by('author')} #ordering
+    #     return context
+    
+    # ordering = ['category']
+    ordering = ['-id']
+
+
+    # Home Work
+    """def get_template_names(self):
+        if self.request.user.is_superuser:
+            template_name = 'superuser.html'
+        elif self.request.user.is_staff:
+            template_name = 'staf.html'
+        else:
+            self.template_name
+        return [template_name]"""
+    
+
+class BookDatailsView(DetailView):
+    model = BookStoreModel
+    template_name = 'book_datails.html'
+    context_object_name = 'item'
+    pk_url_kwarg = 'id'
+        
+
+    
 
 
 def edit_book(request, id):
