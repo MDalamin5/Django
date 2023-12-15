@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Show Book{% endblock title %}
+
+{% block content %}
+<h1 style="margin-bottom: 50px; ">List Of The Task</h1>
+
+<div>
+    {% if tasklist %}
+    <table style="width: 50%; margin: auto;" class="table table-bordered border-primary table-hover">
+    <thead>
+      <tr>
+        
+        <th scope="col">Task Title</th>
+        <th scope="col">Task Description</th>
+        <th scope="col">Status</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in tasklist %}
+        <tr>
+        
+            <td> {{item.taskTitle}}</td>
+            <td> {{item.taskDescription}}</td>
+            
+            <td>
+                {% if item.is_completed %}
+                <p>Complete</p>
+                {% else %}
+                <p>Incomplete</p>
+            {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h2>No Data Abilable</h2>
+</div>
+{% endif %}
+{% endblock content %}

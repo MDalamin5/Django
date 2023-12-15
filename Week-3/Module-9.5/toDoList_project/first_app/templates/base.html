@@ -21,11 +21,15 @@
                 <a class="nav-link active" aria-current="page" href=" {{ab}} ">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Store Task</a>
+                <a class="nav-link" href=" {% url "store_task" %} ">Store Task</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#">Show Task</a>
+                <a class="nav-link" href=" {% url "show_tasks" %} ">Show Task</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href=" {% url "com_task" %} ">com Task</a>
               </li>
               
               
