@@ -109,18 +109,33 @@ class BookDatailsView(DetailView):
     
 
 
-def edit_book(request, id):
-    book = BookStoreModel.objects.get(pk = id)
-    form = BookStoreForm(instance = book)
-    if request.method == 'POST':
-        book = BookStoreForm(request.POST, instance = book)
-        if book.is_valid():
-            book.save()
-            return redirect('show_books')
-    return render(request, 'store_book.html', {'form' : form})
+# def edit_book(request, id):
+#     book = BookStoreModel.objects.get(pk = id)
+#     form = BookStoreForm(instance = book)
+#     if request.method == 'POST':
+#         book = BookStoreForm(request.POST, instance = book)
+#         if book.is_valid():
+#             book.save()
+#             return redirect('show_books')
+#     return render(request, 'store_book.html', {'form' : form})
 
 
-def delete_book(request, id):
-    book = BookStoreModel.objects.get(pk = id).delete()
-    return redirect('show_books')
+# class based View
+
+class BookUpdateView(UpdateView):
+    model = BookStoreModel
+    template_name = 'store_book.html'
+    form_class = BookStoreForm
+    success_url = reverse_lazy('show_books')
+
+
+class DeleteBookView(DeleteView):
+    model = BookStoreModel
+    template_name = 'del_confo.html'
+    success_url = reverse_lazy('show_books')
+
+
+# def delete_book(request, id):
+#     book = BookStoreModel.objects.get(pk = id).delete()
+#     return redirect('show_books')
 

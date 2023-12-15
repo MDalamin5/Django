@@ -12,6 +12,8 @@ urlpatterns = [
     # path('show_book/', views.show_books, name='show_books'),
     path('show_book/', views.BookListViwe.as_view(), name='show_books'),
     path('book_datails/<int:id>', views.BookDatailsView.as_view(), name='book_datails'),
-    path('edit_book/<int:id>', views.edit_book, name="edit_book" ),
-    path('delete_book/<int:id>', views.delete_book, name="delete_book")
+    # path('edit_book/<int:id>', views.edit_book, name="edit_book" ),
+    path('edit_book/<int:pk>', views.BookUpdateView.as_view(), name="edit_book" ),
+    # path('delete_book/<int:id>', views.delete_book, name="delete_book")
+    path('delete_book/<int:pk>', views.DeleteBookView.as_view(), name="delete_book")
 ]

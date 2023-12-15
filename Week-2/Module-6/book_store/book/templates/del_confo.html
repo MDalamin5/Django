@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Book Store{% endblock %}
+
+{% block content %}
+<div style="width: 60%; margin: auto;">
+    <h3>Are you Wnat to Delete this Book?</h3>
+    <form method="post">
+        {% csrf_token %}
+            {{form}}
+        <button class="btn btn-primary" type="submit">Yes</button>
+    </form>
+</div>
+{% endblock content %}
