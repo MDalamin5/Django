@@ -28,10 +28,7 @@
       </div>
       <div class="mb-3">
         <label for="category" class="form-label">Category:</label>
-        <select
-          class="form-select"
-          id="category"
-        >
+        <select class="form-select" id="category">
           <option value="Mystery">Mystery</option>
           <option value="Thriller">Thriller</option>
           <option value="Sci-Fi">Sci-Fi</option>
@@ -97,7 +94,7 @@
 
             $(".update-button").click(function () {
               const bookId = $(this).data("id");
-              console.log(bookId)
+              console.log(bookId);
               const newTitle = prompt("Enter new title:");
               const newAuthor = prompt("Enter new author:");
               const newCategory = prompt("Enter new category:");
@@ -107,7 +104,7 @@
                   url: updateUrl,
                   type: "PUT",
                   data: {
-                    id : bookId,
+                    id: bookId,
                     book_name: newTitle,
                     author: newAuthor,
                     category: newCategory,
