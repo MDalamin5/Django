@@ -11,4 +11,5 @@ router.register('reviews', ProductReviewViewSet)
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     path('', include(router.urls)),
+    path('api_auth/', include("rest_framework.urls")),
 ]
