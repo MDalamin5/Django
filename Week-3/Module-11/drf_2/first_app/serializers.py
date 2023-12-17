@@ -3,6 +3,7 @@ from rest_framework import serializers, viewsets
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    reviews = serializers.StringRelatedField(many=True)
     class Meta:
         model = Product
         fields = '__all__'
