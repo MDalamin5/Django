@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from . permissions import ReviewerOrReadOnly, AdminOrReadOnly
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
+from . import paginations
 # Create your views here.
 
 
@@ -22,6 +23,10 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     filter_backends = [filters.OrderingFilter]
     ordering_fields = ['price']
+
+    # pagination_class = paginations.ProductPagination 
+    pagination_class = paginations.ProductLimitOffsetPagination
+    # pagination_class = paginations.ProductCursorPagination
 
 
 class ProductReviewViewSet(viewsets.ModelViewSet):
