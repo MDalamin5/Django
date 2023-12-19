@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Page</title>
-    <link href="https://unpkg.com/tailwindcss@2.0.1/dist/tailwind-experimental.min.css" rel="stylesheet" >
-</head>
-<body>
-    <h1> {{request.user}} </h1>
+{% extends "base.html" %}
+
+
+{% block body %}
+
+
+    <h1>{{reqest.user}} </h1>
 
     {% comment %} {% extends 'base.html' %} {% load static %} {% block head_title %}Banking System{% endblock %} {% endcomment %}
 
@@ -148,8 +145,6 @@
     </div>
 </div>
 {% comment %} {% endblock %} {% endcomment %}
+{% endblock %}
 
 
-
-</body>
-</html>
