@@ -13,6 +13,8 @@ from transactions.forms import(
     LoanRequestForm,
 )
 from transactions.models import Transaction
+from datetime import datetime
+from django.db.models import Sum
 
 
 # Create your views here.
@@ -106,6 +108,41 @@ class LoanRequestView(TransactionCreateMixin):
         )
         
         return super().form_valid(form)
+    
+    
+
+class TransactionReportView(LoginRequiredMixin, ListView):
+    template_name = 'transactions/transaction_report.html'
+    model = Transaction
+    balance = 0 # filter korar pore ba age amar total balance ke show korbe
+    
+    def get_queryset(self):
+        queryset = super().get_queryset().filter(
+            account=self.request.user.account
+        )
+        start_date_str = self.request.GET.get('start_date')
+        end_date_str = self.request.GET.get('end_date')
+        
+        if start_date_str and end_date_str:
+            start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+            end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
+            
+            queryset = queryset.filter(timestamp__date__gte=start_date, timestamp__date__lte=end_date)
+            self.balance = Transaction.objects.filter(
+                timestamp__date__gte=start_date, timestamp__date__lte=end_date
+            ).aggregate(Sum('amount'))['amount__sum']
+        else:
+            self.balance = self.request.user.account.balance
+       
+        return queryset.distinct() # unique queryset hote hobe
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'account': self.request.user.account
+        })
+
+        return context
     
     
     
