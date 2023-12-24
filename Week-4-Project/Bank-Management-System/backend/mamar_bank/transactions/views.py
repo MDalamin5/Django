@@ -110,7 +110,6 @@ class LoanRequestView(TransactionCreateMixin):
         return super().form_valid(form)
     
     
-
 class TransactionReportView(LoginRequiredMixin, ListView):
     template_name = 'transactions/transaction_report.html'
     model = Transaction
@@ -136,6 +135,7 @@ class TransactionReportView(LoginRequiredMixin, ListView):
        
         return queryset.distinct() # unique queryset hote hobe
     
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
@@ -143,11 +143,38 @@ class TransactionReportView(LoginRequiredMixin, ListView):
         })
 
         return context
+        
+
+
+class PayLoanView(LoginRequiredMixin, View):
+    def get(self, request, loan_id):
+        loan = get_object_or_404(Transaction, id = loan_id)
+        print(loan)
+        if loan.loan_approve:
+            user_account = loan.account
+            if loan.amount < user_account.balance:
+                user_account.balance -= loan.amount
+                loan.balance_after_transaction = user_account.balance
+                user_account.save()
+                loan.loan_approve = True
+                loan.transaction_type = LOAN_PAID
+                loan.save()
+                return redirect('transactions:loan_list')
+            else:
+                messages.error(
+                    self.request,
+                    f"Loan amount is greater then avaliable balance"
+                )
+        return redirect('loan_list')
     
+
+class LoanListView(LoginRequiredMixin, ListView):
+    model = Transaction
+    template_name = ''
+    context_object_name = 'loans'
     
-    
-    
-    
-    
-    
-    
+    def get_queryset(self):
+        user_account = self.request.user.account
+        queryset = Transaction.objects.filter(account=user_account,transaction_type=3)
+        print(queryset)
+        return queryset
