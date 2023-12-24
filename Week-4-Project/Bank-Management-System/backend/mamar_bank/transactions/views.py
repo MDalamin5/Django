@@ -20,10 +20,10 @@ from django.db.models import Sum
 # Create your views here.
 
 class TransactionCreateMixin(LoginRequiredMixin, CreateView):
-    template_name = ''
+    template_name = 'transactions/transaction_form.html'
     model = Transaction
     title = ''
-    success_url = reverse_lazy('')
+    success_url = reverse_lazy('transaction_report')
     
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -99,7 +99,7 @@ class LoanRequestView(TransactionCreateMixin):
     def form_valid(self, form):
         amount = form.cleaned_data.get('amount')
         current_loan_count = Transaction.objects.filter(
-            account = self.request.user.account, transaction_type=3, loan_approved=True).count()
+            account = self.request.user.account, transaction_type=3, loan_approve=True).count()
         if current_loan_count >= 3:
             return HttpResponse('You have cross the loan limits')
         messages.success(
@@ -170,7 +170,7 @@ class PayLoanView(LoginRequiredMixin, View):
 
 class LoanListView(LoginRequiredMixin, ListView):
     model = Transaction
-    template_name = ''
+    template_name = 'transactions/loan_request.html'
     context_object_name = 'loans'
     
     def get_queryset(self):
