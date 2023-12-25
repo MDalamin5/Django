@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .models import Post, Comment, Category
 from .forms import NewCommentForm, PostSearchForm
@@ -5,12 +7,48 @@ from django.views.generic import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
-def home(request, **kwargs):
 
-    print(kwargs)
+    
+# class Dog():
+#     sound = 'Gaqwwwwww'
+    
+#     def db(self):
+#         data = self.model.objects.all()
+#         return data
+    
+        
 
-    all_posts = Post.newmanager.all()
-    return render(request, 'blog/index.html', {'posts': all_posts})
+        
+
+# class home(ListView, Dog):
+#     template_name = 'blog/index.html'
+#     model = Post
+#     context_object_name = 'posts'
+    
+    
+#     def __init__(self):
+#         hi = super().db()
+#         print(hi)
+
+
+class home(ListView):
+    template_name = 'blog/index.html'
+    model = Post
+    context_object_name = 'posts'
+    
+    def get_queryset(self):
+        return Post.objects.filter(title__startswith = 'Learn Django')[:1]
+
+    
+
+
+# def home(request, **kwargs):
+    
+#     print(Dog.eyes)
+
+#     # print(kwargs)
+#     all_posts = Post.newmanager.all()
+#     return render(request, 'blog/index.html', {'posts': all_posts})
 
 
 def post_single(request, post):
