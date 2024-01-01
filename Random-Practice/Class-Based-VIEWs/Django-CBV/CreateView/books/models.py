@@ -15,3 +15,6 @@ class Books(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
+    
+    def __str__(self) -> str:
+        return f"{self.title} --> {self.author}"

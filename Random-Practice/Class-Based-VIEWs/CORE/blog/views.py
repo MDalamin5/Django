@@ -9,26 +9,8 @@ from django.db.models import Q
 
 
     
-# class Dog():
-#     sound = 'Gaqwwwwww'
-    
-#     def db(self):
-#         data = self.model.objects.all()
-#         return data
-    
-        
-
-        
-
-# class home(ListView, Dog):
-#     template_name = 'blog/index.html'
-#     model = Post
-#     context_object_name = 'posts'
-    
-    
-#     def __init__(self):
-#         hi = super().db()
-#         print(hi)
+def add_numbers(a, b, c):
+    pass
 
 
 class home(ListView):

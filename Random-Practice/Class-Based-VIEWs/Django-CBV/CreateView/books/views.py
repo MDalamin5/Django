@@ -1,25 +1,29 @@
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.views.generic.edit import FormView, CreateView
+from django.views.generic.edit import FormView, CreateView, UpdateView
 from books.models import Books
 from . forms import AddForm
 from django.db.models import F
 from django.utils import timezone
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
-""" 
-class AddBookView(FormView):
 
-    template_name = 'add.html'
+class BookEditView(PermissionRequiredMixin, UpdateView):
+    raise_exception = False
+    permission_required = 'books.change_books'
+    permission_denied_message = 'Bhai aga Login Kora achooo'
+    login_url = '/books/'
+    redirect_field_name = 'next'
+    
+    
+    model = Books
     form_class = AddForm
+    template_name = 'add.html'
     success_url = '/books/'
-
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form) 
-"""
-
+    
+    
 
 class AddBookView(CreateView):
     model = Books
