@@ -8,15 +8,27 @@ from django.db.models import F
 from django.utils import timezone
 
 
-class AddBookView(FormView):
+# class AddBookView(FormView):
 
+#     template_name = 'add.html'
+#     form_class = AddForm
+#     success_url = '/books/'
+
+#     def form_valid(self, form):
+#         form.save()
+#         return super().form_valid(form)
+
+
+class AddBookView(FormView):
     template_name = 'add.html'
     form_class = AddForm
     success_url = '/books/'
-
+    
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+    
+    
 
 
 class IndexView(ListView):
