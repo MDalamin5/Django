@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'category',
     'store',
     'cart',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,20 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+# SMTP configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'smcaalamin@gmail.com'
+EMAIL_HOST_PASSWORD = "mnuk mspq yjib mjgx"
+EMAIL_USE_TLS = True
+
+SSLCOMMERZ_PAYMENT_URL = 'https://sandbox.sslcommerz.com/gwprocess/v4/api.php'  # Update with production URL for live environment
+SSLCOMMERZ_STORE_ID = 'djang64a00838ddbc2'
+SSLCOMMERZ_STORE_PASSWORD = 'RUf4qUafVnvcRNN'
